@@ -1,4 +1,4 @@
-# LLM ISO Benchmark — raw data
+# LLM ISO Benchmark: raw data
 
 Companion repository for the Medium article *"Should we implicitly trust AI with our optimization problems? Like taxes?"*
 
@@ -47,7 +47,7 @@ Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) co
 | **Deterministic optimum** | n/a | $725,912 | 1.00× |
 
 Stated NFV = the model's claimed final net final value for its own recommended schedule.
-True NFV = what that exact schedule would actually deliver, computed by feeding it through a deterministic AMT-ISO tax calculator.
+True NFV = what that schedule delivers when fed through a deterministic AMT-ISO tax calculator.
 
 ## Scoring methodology
 
@@ -73,7 +73,7 @@ The underlying calculator source is not included in this repository (it is the c
 4. Capture each model's recommended schedule and stated NFV.
 5. Compare to the schedules and stated NFVs recorded in `runs/{model}/run-{1,2,3}.md`.
 
-LLM output is non-deterministic at temperature 1.0; exact responses will differ run to run. The expected pattern — stated NFV exceeds true NFV by a factor of 2× to 20× across models — should hold.
+LLM output is non-deterministic at temperature 1.0; exact responses will differ run to run. The expected pattern (stated NFV exceeds true NFV by a factor of 2× to 20× across models) should hold.
 
 ## License
 

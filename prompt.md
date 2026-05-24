@@ -11,12 +11,12 @@
 2. **Provide no AMT/state-tax hints.** A correct answer requires the model to *recognize* that AMT and state taxes are load-bearing here. We test whether it does.
 3. **Specify the optimization target explicitly** (net final value at year 4, defined with the time-value adjustment). No ambiguity about what "best" means.
 4. **Request a structured table.** So outputs are mechanically diff-able. Models that ramble in prose without filling the table are scored on whatever they *do* commit to numerically.
-5. **Date-stamp** ("as of May 2026"). So the model knows which tax year's rules apply — and any model citing 2025 brackets is making a stale-knowledge error we can flag.
+5. **Date-stamp** ("as of May 2026"). So the model knows which tax year's rules apply, and any model citing 2025 brackets is making a stale-knowledge error we can flag.
 6. **Provide an out** ("any caveats or alternative approaches"). The model can hedge if it wants. We score the recommendation it commits to.
 
 ---
 
-## The prompt (verbatim) — v2 (vol drag pre-computed to remove interpretation as a failure mode)
+## The prompt (verbatim): v2 (vol drag pre-computed to remove interpretation as a failure mode)
 
 ```
 As of May 2026.
@@ -77,7 +77,7 @@ Final NFV: **$725,912**
 3. **Static-bracket**: model cites 2024 or 2025 AMT phaseout thresholds. The 2026 OBBBA-driven change to phaseout start and rate is not in pre-2026 training data.
 4. **Even-split bias**: model recommends 5,000/year across the board with hand-wavy "diversification" justification. NFV ~$387K, leaves $339K on the table.
 5. **Lump-sum-Y1 bias**: model recommends "exercise early to start the LTCG clock" without modeling the AMT consequences. NFV ~$123K, leaves $602K on the table.
-6. **Math drift on its own table**: model fills in numbers in the table that don't sum or compound consistently. We compute the true NFV under the model's recommended schedule and report both: what the model *claimed* and what the user *would actually realize*.
+6. **Math drift on its own table**: model fills in numbers in the table that don't sum or compound consistently. We compute the true NFV under the model's recommended schedule and report both: what the model *claimed* and what the user *would realize*.
 7. **Refusal/hedging**: model declines to give specific numbers, suggests consulting a CPA. Scored as null (no recommendation made), reported in the article's "abstain rate" column.
 
 ## Scoring rubric

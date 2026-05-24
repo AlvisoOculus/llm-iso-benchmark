@@ -1,8 +1,8 @@
-# Benchmark scenario — locked inputs
+# Benchmark scenario: locked inputs
 
-**Article:** "I asked five AI models to optimize the same ISO exercise. All five lost five-figure money." (Medium / Start It Up)
+**Article:** "Should we implicitly trust AI with our optimization problems? Like taxes?" (Medium)
 
-**Source of truth:** `optionsahoy_web/web/tests/post-d-validation.test.ts` — 11 assertions, all green as of 2026-05-23.
+**Source of truth:** `optionsahoy_web/web/tests/post-d-validation.test.ts` (11 assertions, all green as of 2026-05-23).
 
 **Calc used:** `optionsahoy_web/web/lib/calc/amtIso.ts` at HEAD of `main`.
 
@@ -40,7 +40,7 @@
 
 ## Sensitivity probes (useful as article rebuttals)
 
-These show the optimizer's edge is not robust to every input — *which is itself a point in the article's favor*, because the LLMs should be able to reason about these too, and they won't.
+These show the optimizer's edge is sensitive to inputs, *which is itself a point in the article's favor*, because the LLMs should be able to reason about these too, and they won't.
 
 | Variation | Lump-sum NFV | Even-split NFV | Optimized NFV |
 |---|---|---|---|
@@ -50,17 +50,17 @@ These show the optimizer's edge is not robust to every input — *which is itsel
 | Vol drag = 30% (typical liquid tech) | $1,849,947 | $1,667,635 | $1,873,628 |
 
 Key reads:
-- **Cash return matters most for the lump-sum line** — paying AMT early in dollars worth 5.5%/yr is materially worse than spreading it.
-- **State tax dominates the absolute numbers** — CA AMT + LTCG eat ~$650K vs TX. Any LLM that defaults to "federal only" gives a 2× wrong answer.
-- **Vol drag collapses the optimized edge** — when realized vol is low, holding-and-batching loses its advantage. The optimizer correctly de-leverages here.
+- **Cash return matters most for the lump-sum line.** Paying AMT early in dollars worth 5.5%/yr is materially worse than spreading it.
+- **State tax dominates the absolute numbers.** CA AMT + LTCG eat ~$650K vs TX. Any LLM that defaults to "federal only" gives a 2× wrong answer.
+- **Vol drag collapses the optimized edge.** When realized vol is low, holding-and-batching loses its advantage. The optimizer correctly de-leverages here.
 
 ## What "got it wrong" means in this benchmark
 
 For each LLM response, we compute:
-1. **Recommended schedule** — the LLM's per-year share allocation.
-2. **LLM's claimed NFV** — what the model says you'd net at horizon.
-3. **True NFV under that schedule** — feed the LLM's recommendation into our calc; this is the value the user would actually realize.
-4. **Delta vs deterministic optimum** — true NFV minus $725,912.
+1. **Recommended schedule:** the LLM's per-year share allocation.
+2. **LLM's claimed NFV:** what the model says you'd net at horizon.
+3. **True NFV under that schedule:** feed the LLM's recommendation into our calc; this is the value the user would realize.
+4. **Delta vs deterministic optimum:** true NFV minus $725,912.
 
 "Got it wrong" = delta < $0. "Got it wrong by five figures" = delta worse than -$10,000.
 
