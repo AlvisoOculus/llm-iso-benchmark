@@ -32,11 +32,11 @@
 |---|---|---|---|---|---|
 | Lump-sum (all in Y1) | 20,000 | 0 | 0 | 0 | **$123,205** |
 | Even split | 5,000 | 5,000 | 5,000 | 5,000 | **$387,473** |
-| **Optimized** | 333 | 333 | 667 | 18,667 | **$725,912** |
+| **Optimized** | 306 | 338 | 740 | 18,616 | **$726,409** |
 
-**Optimized vs lump-sum ratio:** 5.89×
+**Optimized vs lump-sum ratio:** 5.90×
 
-**Cumulative NFV for optimized:** $30,389 (Y1) → $62,648 (Y2) → $113,086 (Y3) → $725,912 (Y4). Plan batches the bulk of shares into Y4 to defer exercise until vol-drag-adjusted FMV produces a higher net-of-tax return.
+The optimizer batches the bulk of shares into Y4 to defer exercise until the vol-drag-adjusted FMV produces a higher net-of-tax return. Small Y1–Y3 tranches qualify a portion of shares for long-term capital gains treatment by Y4. Schedule is the global optimum at 1-share granularity (chunk-grid search seeded with lump-sum and even-split, then 1-share coordinate-descent refinement).
 
 ## Sensitivity probes (useful as article rebuttals)
 
@@ -44,7 +44,7 @@ These show the optimizer's edge is sensitive to inputs, *which is itself a point
 
 | Variation | Lump-sum NFV | Even-split NFV | Optimized NFV |
 |---|---|---|---|
-| Baseline (CA, 65% vol drag, 5.5% cash) | $123,205 | $387,473 | $725,912 |
+| Baseline (CA, 65% vol drag, 5.5% cash) | $123,205 | $387,473 | $726,409 |
 | Cash return = 0% | $365,894 | $503,961 | $727,797 |
 | State = TX (no state tax) | $775,339 | $977,829 | $1,246,380 |
 | Vol drag = 30% (typical liquid tech) | $1,849,947 | $1,667,635 | $1,873,628 |
@@ -60,7 +60,7 @@ For each LLM response, we compute:
 1. **Recommended schedule:** the LLM's per-year share allocation.
 2. **LLM's claimed NFV:** what the model says you'd net at horizon.
 3. **True NFV under that schedule:** feed the LLM's recommendation into our calc; this is the value the user would realize.
-4. **Delta vs deterministic optimum:** true NFV minus $725,912.
+4. **Delta vs deterministic optimum:** true NFV minus $726,409.
 
 "Got it wrong" = delta < $0. "Got it wrong by five figures" = delta worse than -$10,000.
 

@@ -44,7 +44,7 @@ Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) co
 | Grok 4.20 multi-agent | $1.37M – $1.43M | $517K – $672K | 2.04× – 2.77× |
 | Gemini 2.5 Pro | $1.21M – $2.43M | $123K – $387K | 3.12× – 19.70× |
 | Mistral Large 2512 | $3.60M – $10.98M | $477K – $672K | 7.55× – 17.75× |
-| **Deterministic optimum** | n/a | $725,912 | 1.00× |
+| **Deterministic optimum** | n/a | $726,409 | 1.00× |
 
 Stated NFV = the model's claimed final net final value for its own recommended schedule.
 True NFV = what that schedule delivers when fed through a deterministic AMT-ISO tax calculator.
@@ -61,7 +61,7 @@ For each response, we extracted the recommended per-year share schedule (4 integ
 6. Future-valued cash tax stream at the cash return rate (5.5%/year).
 7. Net final value at end of horizon = gross sale proceeds minus all taxes (in horizon-year dollars).
 
-The deterministic optimizer that produced the reference $725,912 outcome uses brute-force grid search at 1-share granularity across all valid 4-year share allocations.
+The deterministic optimizer that produced the reference $726,409 outcome uses a chunk-grid search (333-share chunks for a 4-year horizon) with depth-first branch-and-bound pruning, seeded by lump-sum and even-split heuristics, followed by a coordinate-descent refinement pass at 1-share granularity. The refinement step converges to the true 1-share-resolution local optimum from the chunk-grid winner; given the value function is piecewise linear and the coarse grid already locates the correct smooth region, the local optimum is the global optimum.
 
 The underlying calculator source is not included in this repository (it is the core IP of [OptionsAhoy](https://optionsahoy.com)). The scoring methodology above is sufficient for an independent implementation: anyone with a working AMT calculator can feed the model schedules through their own engine and verify the true NFVs reported here.
 
