@@ -1,0 +1,80 @@
+# LLM ISO Benchmark — raw data
+
+Companion repository for the Medium article *"Five AI models, one ISO optimization problem. Every answer was off by 2× to 20×."*
+
+Five frontier AI models were given the same incentive stock option (ISO) exercise optimization problem. Three independent runs per model = 15 total responses. This repo contains the verbatim prompt, the full set of model responses, the scoring methodology, and supporting charts.
+
+## What's here
+
+| File | Contents |
+|---|---|
+| [`prompt.md`](prompt.md) | The verbatim prompt sent to every model, with the scoring rubric and design rationale. |
+| [`scenario.md`](scenario.md) | The locked scenario inputs (20K ISOs, $2 strike, $200 FMV, MFJ $300K, CA, 4-year horizon, σ=0.72, etc.) and the deterministic reference values. |
+| [`runs/{model}/run-{1,2,3}.md`](runs/) | One file per model per run. Each contains the full verbatim model output, plus extracted schedule + stated NFV. |
+| [`runs/v1-prompt/`](runs/v1-prompt/) | Earlier-prompt runs preserved for methodology transparency. The v1 prompt left vol drag interpretation ambiguous; the v3 prompt provides the Itô formula directly. |
+| `chart-*.png` | The three figures used in the Medium article. |
+
+## Models tested
+
+| Model | Provider ID | Surface |
+|---|---|---|
+| Claude Opus 4.7 (reasoning) | `anthropic/claude-opus-4.7` | Claude Code sub-agent (Anthropic API) |
+| GPT-5.5 (no reasoning) | `openai/gpt-5.5` | OpenRouter |
+| Gemini 2.5 Pro (reasoning) | `google/gemini-2.5-pro` | OpenRouter |
+| Grok 4.20 multi-agent (reasoning) | `x-ai/grok-4.20-multi-agent` | OpenRouter |
+| Mistral Large 2512 | `mistralai/mistral-large-2512` | OpenRouter |
+
+Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) consumed the entire 16K output token budget on thinking and returned empty completion text at $2.96 per call.
+
+## Run configuration
+
+- `temperature: 1.0`
+- `max_tokens: 16384`
+- `reasoning: { max_tokens: 8000 }` where applicable
+- No system prompt
+- No tool use
+- Fresh isolated request per call (no conversation history)
+
+## Results summary
+
+| Model | Stated NFV range | True NFV range | Stated/true ratio range |
+|---|---|---|---|
+| Claude Opus 4.7 | $1.56M – $1.79M | $372K – $387K | 4.19× – 4.62× |
+| GPT-5.5 (no reasoning) | $1.43M – $1.54M | $588K – $695K | 2.06× – 2.79× |
+| Grok 4.20 multi-agent | $1.37M – $1.43M | $517K – $672K | 2.04× – 2.77× |
+| Gemini 2.5 Pro | $1.21M – $2.43M | $123K – $387K | 3.12× – 19.70× |
+| Mistral Large 2512 | $3.60M – $10.98M | $477K – $672K | 7.55× – 17.75× |
+| **Deterministic optimum** | n/a | $725,912 | 1.00× |
+
+Stated NFV = the model's claimed final net final value for its own recommended schedule.
+True NFV = what that exact schedule would actually deliver, computed by feeding it through a deterministic AMT-ISO tax calculator.
+
+## Scoring methodology
+
+For each response, we extracted the recommended per-year share schedule (4 integers summing to 20,000) and the model's stated NFV. The schedule was then fed through a deterministic tax calculator that computes:
+
+1. Per-year bargain element (FMV at exercise minus strike, times shares).
+2. Federal AMT (2026 brackets per IRS Rev. Proc. 2025-32: exemption $140,200 MFJ, phaseout start $1M MFJ at 50% rate, 26%/28% rates above the $244,500 breakpoint).
+3. California AMT (7% above state exemption).
+4. AMT credit recovery in subsequent years where regular tax exceeds tentative minimum tax.
+5. Long-term vs short-term capital gains treatment based on disposition periods.
+6. Future-valued cash tax stream at the cash return rate (5.5%/year).
+7. Net final value at end of horizon = gross sale proceeds minus all taxes (in horizon-year dollars).
+
+The deterministic optimizer that produced the reference $725,912 outcome uses brute-force grid search at 1-share granularity across all valid 4-year share allocations.
+
+The underlying calculator source is not included in this repository (it is the core IP of [OptionsAhoy](https://optionsahoy.com)). The scoring methodology above is sufficient for an independent implementation: anyone with a working AMT calculator can feed the model schedules through their own engine and verify the true NFVs reported here.
+
+## Reproducing the runs
+
+1. Get an OpenRouter API key, fund with at least $10 (the benchmark cost $8.68 total across 15 calls).
+2. Open `prompt.md`, copy the verbatim prompt from the code block.
+3. Issue identical POST requests to OpenRouter chat completions for each of the model IDs above, with the configuration listed.
+4. Capture each model's recommended schedule and stated NFV.
+5. Compare to the schedules and stated NFVs recorded in `runs/{model}/run-{1,2,3}.md`.
+
+LLM output is non-deterministic at temperature 1.0; exact responses will differ run to run. The expected pattern — stated NFV exceeds true NFV by a factor of 2× to 20× across models — should hold.
+
+## License
+
+Raw model responses are reproduced under fair-use research-citation principles. The scoring methodology, scenario definition, and prompt are released under MIT license.
