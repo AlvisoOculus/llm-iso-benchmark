@@ -1,6 +1,6 @@
 # LLM ISO Benchmark — raw data
 
-Companion repository for the Medium article *"Five AI models, one ISO optimization problem. Every answer was off by 2× to 20×."*
+Companion repository for the Medium article *"Should we implicitly trust AI with our optimization problems? Like taxes?"*
 
 Five frontier AI models were given the same incentive stock option (ISO) exercise optimization problem. Three independent runs per model = 15 total responses. This repo contains the verbatim prompt, the full set of model responses, the scoring methodology, and supporting charts.
 
@@ -24,7 +24,7 @@ Five frontier AI models were given the same incentive stock option (ISO) exercis
 | Grok 4.20 multi-agent (reasoning) | `x-ai/grok-4.20-multi-agent` | OpenRouter |
 | Mistral Large 2512 | `mistralai/mistral-large-2512` | OpenRouter |
 
-Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) consumed the entire 16K output token budget on thinking and returned empty completion text at $2.96 per call.
+Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) consumed the entire 16K output token budget on thinking and returned empty completion text at $2.96 per call. We switched to the non-reasoning `gpt-5.5` variant to keep per-call costs in the same order of magnitude across models tested.
 
 ## Run configuration
 
