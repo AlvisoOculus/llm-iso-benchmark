@@ -2,7 +2,7 @@
 
 Companion repository for the Medium article *"Should we implicitly trust AI with our optimization problems? Like taxes?"*
 
-Five frontier AI models were given the same incentive stock option (ISO) exercise optimization problem. Three independent runs per model = 15 total responses. This repo contains the verbatim prompt, the full set of model responses, the scoring methodology, and supporting charts.
+Frontier AI models were given the same incentive stock option (ISO) exercise optimization problem. The original round (May 2026) tested five models, three runs each (15 responses); a June 2026 update re-ran five of the latest models on the identical prompt (another 15). This repo contains the verbatim prompt, the full set of model responses for both rounds, the scoring methodology, and supporting charts. The headline finding holds across both: every model overshoots the achievable after-tax outcome, by 2x to 20x.
 
 ## What's here
 
@@ -16,6 +16,8 @@ Five frontier AI models were given the same incentive stock option (ISO) exercis
 
 ## Models tested
 
+### Original batch (May 2026, three runs each)
+
 | Model | Provider ID | Surface |
 |---|---|---|
 | Claude Opus 4.7 (reasoning) | `anthropic/claude-opus-4.7` | Claude Code sub-agent (Anthropic API) |
@@ -26,6 +28,20 @@ Five frontier AI models were given the same incentive stock option (ISO) exercis
 
 Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) consumed the entire 16K output token budget on thinking and returned empty completion text at $2.96 per call. We switched to the non-reasoning `gpt-5.5` variant to keep per-call costs in the same order of magnitude across models tested.
 
+### Latest batch (June 2026, three runs each)
+
+A year later, the same locked prompt was re-run against five of the latest models, reasoning explicitly disabled. Results in [Latest models](#latest-models-2026-06-update) below; verbatim transcripts in [`runs/latest-2026-06/`](runs/latest-2026-06/).
+
+| Model | Provider ID | Surface |
+|---|---|---|
+| Grok 4.3 | `x-ai/grok-4.3` | OpenRouter |
+| GPT-5.5 | `openai/gpt-5.5` | OpenRouter |
+| DeepSeek V3.2 | `deepseek/deepseek-v3.2` | OpenRouter |
+| Claude Opus 4.8 | `claude-opus-4-8` | Claude Code (local subscription) |
+| Qwen 3.7 Max | `qwen/qwen3.7-max` | OpenRouter |
+
+Excluded on cost: `google/gemini-3.1-pro-preview` is reasoning-mandatory and timed out after four minutes having spent about $0.24 of reasoning for no usable output, the same disproportionate-cost behavior that dropped `gpt-5.5-pro` above.
+
 ## Run configuration
 
 - `temperature: 1.0`
@@ -35,7 +51,7 @@ Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) co
 - No tool use
 - Fresh isolated request per call (no conversation history)
 
-## Results summary
+## Results summary (original batch, May 2026)
 
 | Model | Stated NFV range | True NFV range | Stated/true ratio range |
 |---|---|---|---|
