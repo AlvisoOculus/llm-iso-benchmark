@@ -1,4 +1,4 @@
-# Run record — Claude Opus 4.8 run 1
+# Run record - Claude Opus 4.8 run 1
 
 ## Metadata
 
@@ -9,13 +9,13 @@
 - **Timestamp:** 2026-06-15 PT
 - **Fresh chat?** yes
 - **System prompt active?** no
-- **Thinking / reasoning mode toggled on?** no (reasoning explicitly disabled via the API)
+- **Thinking / reasoning mode toggled on?** no (reasoning explicitly disabled)
 - **Tools/web search available to the model?** no
 
 ## Scoring
 
 - **Stated final NFV:** $1,566,600
-- **Provable optimum for this scenario:** $739,600.82 (recomputed live; the original publication cited $725,912)
+- **Provable optimum:** $739,600.82
 - **Overstatement (stated / optimum):** 2.12x
 
 ## Prompt sent

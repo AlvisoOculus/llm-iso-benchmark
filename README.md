@@ -52,23 +52,31 @@ True NFV = what that schedule delivers when fed through a deterministic AMT-ISO 
 ## Latest models (2026-06 update)
 
 A year of model progress later, the finding holds. The same locked prompt was run
-against five newer frontier models (one run each, reasoning explicitly disabled).
-Here the overstatement is measured against the provable optimum (the maximum
-achievable after-tax outcome), recomputed live at $739,600.82 for this scenario.
-Full transcripts are in [`runs/latest-2026-06/`](runs/latest-2026-06/).
+against five newer models, three runs each (temperature 1.0, reasoning explicitly
+disabled), matching the original methodology. Overstatement is measured against the
+provable optimum (the maximum achievable after-tax outcome), recomputed live at
+$739,600.82 for this scenario. The full run-1, run-2, and run-3 transcripts per
+model are in [`runs/latest-2026-06/`](runs/latest-2026-06/).
 
-| Model | Stated final NFV | Overstatement (stated / optimum) |
+| Model | Stated NFV (3 runs) | Overstatement |
 |---|---|---|
-| Grok 4.3 | $5,222,000 | 7.06× |
-| GPT-5.5 | $3,407,172 | 4.61× |
-| DeepSeek V3.2 | $2,735,160 | 3.70× |
-| Claude Opus 4.8 | $1,566,600 | 2.12× |
-| Qwen 3.7 Max | $1,326,498 | 1.79× |
+| Grok 4.3 | $3.94M – $12.98M | 5.33× – 17.55× |
+| GPT-5.5 | $1.38M – $3.41M (one run abstained) | 1.87× – 4.61× |
+| DeepSeek V3.2 | $1.30M – $2.74M | 1.76× – 3.70× |
+| Claude Opus 4.8 | $1.54M – $1.57M | 2.08× – 2.12× |
+| Qwen 3.7 Max | $1.20M – $2.06M | 1.62× – 2.79× |
 | **Provable optimum** | **$739,600.82** | **1.00×** |
 
-Gemini 3.1 Pro was excluded: it is reasoning-mandatory, and reasoning models were
-out of scope for this batch. Every newest-generation model still overshoots the
-achievable after-tax outcome, by roughly 2× to 7×.
+Two things stand out. The overshoot is not just large, it is unstable: Grok 4.3
+claimed $3.94M, $5.22M, and $12.98M on three runs of the identical problem, and
+GPT-5.5 abstained on one run ("requires individualized modeling by a qualified
+professional"). And the most consistent model, Claude Opus 4.8, still overstates by
+about 2x every time.
+
+Gemini 3.1 Pro was excluded on cost, not category. It is reasoning-mandatory, and
+the run timed out after four minutes having spent about $0.24 of reasoning for no
+usable output, the same disproportionate-cost behavior that dropped a reasoning
+model from the original batch.
 
 ## Scoring methodology
 

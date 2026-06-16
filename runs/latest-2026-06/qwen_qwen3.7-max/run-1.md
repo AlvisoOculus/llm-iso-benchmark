@@ -1,4 +1,4 @@
-# Run record — Qwen 3.7 Max run 1
+# Run record - Qwen 3.7 Max run 1
 
 ## Metadata
 
@@ -9,13 +9,13 @@
 - **Timestamp:** 2026-06-15 PT
 - **Fresh chat?** yes
 - **System prompt active?** no
-- **Thinking / reasoning mode toggled on?** no (reasoning explicitly disabled via the API)
+- **Thinking / reasoning mode toggled on?** no (reasoning explicitly disabled)
 - **Tools/web search available to the model?** no
 
 ## Scoring
 
 - **Stated final NFV:** $1,326,498
-- **Provable optimum for this scenario:** $739,600.82 (recomputed live; the original publication cited $725,912)
+- **Provable optimum:** $739,600.82
 - **Overstatement (stated / optimum):** 1.79x
 
 ## Prompt sent

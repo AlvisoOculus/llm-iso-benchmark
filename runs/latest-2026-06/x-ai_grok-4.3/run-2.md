@@ -1,11 +1,11 @@
-# Run record - Grok 4.3 run 1
+# Run record - Grok 4.3 run 2
 
 ## Metadata
 
 - **Model:** Grok 4.3
 - **Model version string:** `x-ai/grok-4.3`
 - **Interface used:** OpenRouter API
-- **Run number:** 1
+- **Run number:** 2
 - **Timestamp:** 2026-06-15 PT
 - **Fresh chat?** yes
 - **System prompt active?** no
@@ -14,9 +14,9 @@
 
 ## Scoring
 
-- **Stated final NFV:** $5,222,000
+- **Stated final NFV:** $3,942,877
 - **Provable optimum:** $739,600.82
-- **Overstatement (stated / optimum):** 7.06x
+- **Overstatement (stated / optimum):** 5.33x
 
 ## Prompt sent
 
@@ -58,29 +58,21 @@ Briefly note any caveats, assumptions you made, or alternative strategies you'd 
 ## Model output (verbatim)
 
 ```
-**Strategy note:**  
-Best NFV is obtained by exercising **all 20 000 ISOs in Year 4**.  
-Earlier exercise is dominated by three forces: (1) immediate cash-tax drag whose 5.5 % compounding cost exceeds the option’s (still-positive) net value if held; (2) the deep in-the-money ISO creates a non-trivial risk of AMT that would be paid with after-tax dollars that could otherwise compound at 5.5 %; and (3) the 17 % arithmetic drift is applied only to the spread, and the large volatility does not offset the time-value penalty under the problem’s explicit 5.5 % discount for pre-paid tax.  Therefore zero exercise, zero cash-tax, zero cumulative-NFV table entries are made for Years 1-3.
+The strategy that maximizes NFV is exercised **all 20 000 shares in Year 1** and **sell all shares immediately**, preserving long-term capital-gains eligibility because the ISOs are already > 2 yr old.
 
 | Year | Shares to exercise | Cash tax owed (then-year dollars) | Cumulative NFV (end-of-year-4 dollars) |
 |------|--------------------|-----------------------------------|----------------------------------------|
-| 1    | 0                  | $0                                | $0                                     |
-| 2    | 0                  | $0                                | $0                                     |
-| 3    | 0                  | $0                                | $0                                     |
-| 4    | 20 000             | $1 638 000                        | $6 308 000                             |
+| 1    | 20 000             | 1 386 000                         | 3 942 877                              |
+| 2    | 0                  | 0                                 | 3 942 877                              |
+| 3    | 0                  | 0                                 | 3 942 877                              |
+| 4    | 0                  | 0                                 | 3 942 877                              |
 
-**Year-4 details**  
-- Projected year-4 median price (geometric-mean path)  
-  μ_geo = 0.17 – 0.72²/2 ≈ –0.0896 → 72.7 % cumulative rise → median price ≈ $345/share.  
-- Spread at exercise: $345 – $2 = $343 × 20 000 = $6 860 000.  
-- Cash-taxes (federal AMT + CA ordinary rates ≈ 37 % + 13.3 % effective marginal, 3 % CA mental-health surcharge) ≈ **$1 638 000**.  
-- After-tax proceeds = $6 860 000 – $1 638 000 = $5 222 000 cash on hand at end of Year 4.  
-- The AMT basis ($2) carries forward, providing potential future capital-gains shelter; because the problem horizon ends at Year 4, the $5 222 000 net cash is the sole NFV component.  
+**Final NFV at end of Year 4: $3 942 877**
 
-**Final NFV at end of Year 4: $5,222,000**  
+**Caveats / assumptions**
 
-**Caveats & alternatives**  
-- Assumes no Section 83(i) deferral or 409A valuation change; actual AMT brackets, state conformity, and phase-outs may shift the $1.638 m figure.  
-- Ignores any sale-timing within Year 4 (qualifying disposition not feasible on same-day exercise).  
-- If AMT credit usability or liquidity needs differ, a Year-3 / Year-4 split may be examined, but it lowers NFV under the stated 5.5 % cost of capital.
+* Immediate sale of all shares in Year 1 while employing the $1.386 M cash.  5.5 % idle-cash drag for four years on this tax outlay = $1.386 M × 1.055^4 ≈ $1.716 M FV drag.  
+* Tax modeled as 37 % federal ordinary + 3.8 % NIIT + 13.3 % CA ordinary = 54.1 % flat on the $3.96 M spread ($200 – $2).  This is a conservative worst-case ordinary-rate trigger; in practice a same-day or next-day disqualifying disposition keeps most of the spread subject to ordinary income rates, so the table above is close.  
+* Geometric drift used for remaining shares held to Y4: 17 % – 0.72²/2 ≈ –9 % p.a.; median share price at Y4 = $200 × (0.91)^3 ≈ $151.  Selling then yields zero additional net proceeds.  
+* No AMT due because the disqualifying disposition occurs in the same taxable year as the ISO exercise.
 ```
