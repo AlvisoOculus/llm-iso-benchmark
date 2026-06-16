@@ -30,7 +30,7 @@ Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) co
 
 ### Latest batch (June 2026, three runs each)
 
-A year later, the same locked prompt was re-run against five of the latest models, reasoning explicitly disabled. Results in [Latest models](#latest-models-2026-06-update) below; verbatim transcripts in [`runs/latest-2026-06/`](runs/latest-2026-06/).
+About a month later (June 2026), the same locked prompt was re-run against five of the latest frontier models, reasoning explicitly disabled. Results in [Latest models](#latest-models-2026-06-update) below; verbatim transcripts in [`runs/latest-2026-06/`](runs/latest-2026-06/).
 
 | Model | Provider ID | Surface |
 |---|---|---|
@@ -67,9 +67,9 @@ True NFV = what that schedule delivers when fed through a deterministic AMT-ISO 
 
 ## Latest models (2026-06 update)
 
-A year of model progress later, the finding holds. The same locked prompt was run
-against five newer models, three runs each (temperature 1.0, reasoning explicitly
-disabled), matching the original methodology. Overstatement is measured against the
+About a month later (June 2026), the same locked prompt was re-run against five of
+the latest frontier models, three runs each (temperature 1.0, reasoning explicitly
+disabled), matching the original methodology. The finding holds. Overstatement is measured against the
 provable optimum (the maximum achievable after-tax outcome), recomputed live at
 $739,600.82 for this scenario. The full run-1, run-2, and run-3 transcripts per
 model are in [`runs/latest-2026-06/`](runs/latest-2026-06/).
