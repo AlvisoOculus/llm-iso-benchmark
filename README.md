@@ -49,6 +49,27 @@ Plus one variant tested and dropped: `openai/gpt-5.5-pro` (reasoning enabled) co
 Stated NFV = the model's claimed final net final value for its own recommended schedule.
 True NFV = what that schedule delivers when fed through a deterministic AMT-ISO tax calculator.
 
+## Latest models (2026-06 update)
+
+A year of model progress later, the finding holds. The same locked prompt was run
+against five newer frontier models (one run each, reasoning explicitly disabled).
+Here the overstatement is measured against the provable optimum (the maximum
+achievable after-tax outcome), recomputed live at $739,600.82 for this scenario.
+Full transcripts are in [`runs/latest-2026-06/`](runs/latest-2026-06/).
+
+| Model | Stated final NFV | Overstatement (stated / optimum) |
+|---|---|---|
+| Grok 4.3 | $5,222,000 | 7.06× |
+| GPT-5.5 | $3,407,172 | 4.61× |
+| DeepSeek V3.2 | $2,735,160 | 3.70× |
+| Claude Opus 4.8 | $1,566,600 | 2.12× |
+| Qwen 3.7 Max | $1,326,498 | 1.79× |
+| **Provable optimum** | **$739,600.82** | **1.00×** |
+
+Gemini 3.1 Pro was excluded: it is reasoning-mandatory, and reasoning models were
+out of scope for this batch. Every newest-generation model still overshoots the
+achievable after-tax outcome, by roughly 2× to 7×.
+
 ## Scoring methodology
 
 For each response, we extracted the recommended per-year share schedule (4 integers summing to 20,000) and the model's stated NFV. The schedule was then fed through a deterministic tax calculator that computes:
