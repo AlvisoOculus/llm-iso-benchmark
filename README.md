@@ -120,6 +120,10 @@ The underlying calculator source is not included in this repository (it is the c
 
 LLM output is non-deterministic at temperature 1.0; exact responses will differ run to run. The expected pattern (stated NFV exceeds true NFV by a factor of 2× to 20× across models) should hold.
 
+## Citation
+
+If you reference this benchmark, please cite it via [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" widget reads it). A citable Zenodo DOI is prepared; see [`ZENODO.md`](ZENODO.md) for the one-time minting step.
+
 ## License
 
-Raw model responses are reproduced under fair-use research-citation principles. The scoring methodology, scenario definition, and prompt are released under MIT license.
+Raw model responses are reproduced under fair-use research-citation principles. The scoring methodology, scenario definition, and prompt are released under MIT license (see [`LICENSE`](LICENSE)).

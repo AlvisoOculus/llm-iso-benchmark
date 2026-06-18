@@ -1,0 +1,25 @@
+{
+  "title": "LLM ISO Benchmark: frontier AI models on a deterministic ISO/AMT tax optimization problem",
+  "upload_type": "dataset",
+  "description": "<p>A reproducible benchmark in which frontier large language models are given an identical incentive stock option (ISO) exercise optimization problem and scored against a deterministic ground truth. Across two rounds (May 2026 and June 2026), thirty verbatim model responses are preserved alongside the prompt, the locked scenario inputs, and the scoring methodology. The headline finding is stable: every model overstates the achievable after-tax outcome by a factor of roughly 2x to 20x when it computes the multi-year tax math in-context.</p><p>Living results page: <a href=\"https://optionsahoy.com/benchmark\">optionsahoy.com/benchmark</a>.</p>",
+  "creators": [
+    { "name": "AlphaLatitude Inc." }
+  ],
+  "keywords": [
+    "large language models",
+    "tool use",
+    "benchmark",
+    "incentive stock options",
+    "alternative minimum tax",
+    "equity compensation",
+    "tax optimization",
+    "model evaluation"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "related_identifiers": [
+    { "identifier": "https://optionsahoy.com/benchmark", "relation": "isDocumentedBy", "scheme": "url" },
+    { "identifier": "https://hackernoon.com/but-can-it-do-taxes-though-why-you-shouldnt-trust-chatbots-with-tax-optimization-math", "relation": "isSupplementTo", "scheme": "url" },
+    { "identifier": "https://github.com/AlvisoOculus/llm-iso-benchmark", "relation": "isSupplementTo", "scheme": "url" }
+  ]
+}

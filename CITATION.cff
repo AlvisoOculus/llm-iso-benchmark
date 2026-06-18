@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you reference this benchmark, please cite it as below."
+title: "LLM ISO Benchmark: frontier AI models on a deterministic ISO/AMT tax optimization problem"
+abstract: >-
+  A reproducible benchmark in which frontier large language models are given an
+  identical incentive stock option (ISO) exercise optimization problem and scored
+  against a deterministic ground truth. Across two rounds (May 2026 and June 2026),
+  thirty verbatim model responses are preserved alongside the prompt, the locked
+  scenario inputs, and the scoring methodology. The headline finding is stable:
+  every model overstates the achievable after-tax outcome by a factor of roughly
+  2x to 20x when it computes the multi-year tax math in-context.
+type: dataset
+authors:
+  - name: "AlphaLatitude Inc."
+    website: "https://optionsahoy.com"
+date-released: 2026-06-18
+version: "1.0.0"
+url: "https://optionsahoy.com/benchmark"
+repository-code: "https://github.com/AlvisoOculus/llm-iso-benchmark"
+license: MIT
+keywords:
+  - large language models
+  - tool use
+  - benchmark
+  - incentive stock options
+  - alternative minimum tax
+  - equity compensation
+  - tax optimization
+  - model evaluation
