@@ -1,5 +1,7 @@
 # LLM ISO Benchmark: raw data
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20746889.svg)](https://doi.org/10.5281/zenodo.20746889)
+
 Companion repository for the Medium article *"Should we implicitly trust AI with our optimization problems? Like taxes?"*
 
 Frontier AI models were given the same incentive stock option (ISO) exercise optimization problem. The original round (May 2026) tested five models, three runs each (15 responses); a June 2026 update re-ran five of the latest models on the identical prompt (another 15). This repo contains the verbatim prompt, the full set of model responses for both rounds, the scoring methodology, and supporting charts. The headline finding holds across both: every model overshoots the achievable after-tax outcome, by 2x to 20x.

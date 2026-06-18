@@ -15,6 +15,7 @@ authors:
     website: "https://optionsahoy.com"
 date-released: 2026-06-18
 version: "1.0.0"
+doi: 10.5281/zenodo.20746889
 url: "https://optionsahoy.com/benchmark"
 repository-code: "https://github.com/AlvisoOculus/llm-iso-benchmark"
 license: MIT
