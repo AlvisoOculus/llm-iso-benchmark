@@ -14,10 +14,10 @@ license: mit
 A live companion to the [LLM ISO Tax-Optimization Benchmark](https://github.com/AlvisoOculus/llm-iso-benchmark).
 
 Frontier models were asked one incentive stock option (ISO) exercise question: the schedule
-that maximizes after-tax net final value at a four-year horizon. Across two rounds and ten
-models, every model overshot the achievable after-tax outcome by 2x to 20x. This Space
-recomputes the provable optimum live and contrasts it with the recorded model answers, then
-lets you run the optimizer on your own inputs.
+that maximizes after-tax net final value at a four-year horizon. Across two rounds of five
+frontier models each, every model overshot the achievable after-tax outcome by roughly 2x to
+20x. This Space recomputes the provable optimum live and contrasts it with the recorded model
+answers, then lets you run the optimizer on your own inputs.
 
 The optimum is computed by a deterministic, independently verified optimizer reachable
 without an account or key at `https://optionsahoy.com/api/v1/amt-iso`. Tool documentation for

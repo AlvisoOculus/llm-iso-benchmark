@@ -27,10 +27,10 @@ configs:
 
 Frontier AI models were given one incentive stock option (ISO) exercise-optimization
 problem and asked for the schedule that maximizes after-tax net final value (NFV) at a
-four-year horizon. The headline finding holds across two rounds and ten models: every
-model overshoots the achievable after-tax outcome, by 2x to 20x. The provable optimum is
-computed by a deterministic optimizer and is reproducible against a public, keyless
-endpoint.
+four-year horizon. The headline finding holds across two rounds of five frontier models
+each: every model overshoots the achievable after-tax outcome, by roughly 2x to 20x. The
+provable optimum is computed by a deterministic optimizer and is reproducible against a
+public, keyless endpoint.
 
 This dataset contains the verbatim prompt, the locked scenario with its deterministic
 reference values, the full set of model responses across both rounds, and the

@@ -183,7 +183,8 @@ INTRO = """
 
 Frontier models were asked one incentive stock option (ISO) exercise question: the
 schedule that maximizes after-tax net final value (NFV) at a four-year horizon. Across two
-rounds and ten models, every model overshot the achievable after-tax outcome by 2x to 20x.
+rounds of five frontier models each, every model overshot the achievable after-tax outcome
+by roughly 2x to 20x.
 
 This Space recomputes the provable optimum live and contrasts it with the recorded model
 answers. The optimum is not asserted, it is computed by a deterministic optimizer you can
