@@ -1,0 +1,1 @@
+model,model_version,interface,run_id,timestamp,y1_shares,y2_shares,y3_shares,y4_shares,claimed_ntv,true_ntv,delta_vs_optimum,amt_mentioned,state_tax_mentioned,phaseout_2026_mentioned,disposition_mentioned,vol_drag_mentioned,failure_categories,notes

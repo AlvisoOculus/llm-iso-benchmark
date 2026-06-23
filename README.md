@@ -1,6 +1,8 @@
 # LLM ISO Benchmark: raw data
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20746889.svg)](https://doi.org/10.5281/zenodo.20746889)
+[![Dataset on HF](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/AlphaLatitude/llm-iso-benchmark)
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/AlphaLatitude/iso-tax-ai-vs-optimizer)
 
 Companion repository for the Medium article *"Should we implicitly trust AI with our optimization problems? Like taxes?"*
 
